@@ -3,7 +3,7 @@ import "./App.css";
 
 function Home() {
     // State management for forms 
-    // This allows us to temporarily store form data to send to the 
+    // This allows us to temporarily store form data to send to the model
     const [formData, setFormData] = useState({
         zipCode: '',
         bedrooms: '',
@@ -16,6 +16,7 @@ function Home() {
         numStories: '',
       });
     
+    // Store the result the user calculates
     const [result, setResult] = useState(null);
 
     // Function to update state on form changes
@@ -37,6 +38,8 @@ function Home() {
         parseInt(formData.garageSpaces) * 20000;
 
     setResult(`Estimated Price: $${totalPrice}`);
+    // With full implementation, this is where we'll
+    // send our data to the model and await a response
     };
     
     return (
