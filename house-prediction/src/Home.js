@@ -163,13 +163,13 @@ function Home() {
         button type = "button"
         onClick = { calculatePrice } >
         Calculate <
-        /button> <
-        /form>
+        /button> < /
+        form >
 
         {
-            result && < div id = "result" > { result } < /div>} <
-                /div> <
-                /div>
+            result && < div id = "result" > { result } < /div>} < /
+            div > <
+            /div>
         );
     }
 
