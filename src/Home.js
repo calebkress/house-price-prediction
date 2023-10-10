@@ -45,38 +45,31 @@ function Home() {
 
     return ( <
         div className = "App" >
-        <
-        div className = "houseForm" >
-        <
-        h1 > Home Price Projection < /h1> <
-        form >
-        <
-        label htmlFor = "zipCode" > ZIP Code: < /label> <
-        input type = "number"
+        <div className = "houseForm" >
+        <h1> Home Price Projection </h1> 
+        <form >
+        <label htmlFor = "zipCode" > ZIP Code: </label> 
+        <input type = "number"
         id = "zipCode"
         name = "zipCode"
         value = { formData.zipCode }
         onChange = { handleChange }
         min = "10000"
         max = "99999"
-        required /
-        >
+        required/>
 
-        <
-        label htmlFor = "bedrooms" > Number of Bedrooms: < /label> <
-        input type = "number"
+        <label htmlFor = "bedrooms" > Number of Bedrooms: </label> 
+        <input type = "number"
         id = "bedrooms"
         name = "bedrooms"
         value = { formData.bedrooms }
         onChange = { handleChange }
         min = "0"
         step = "1"
-        required /
-        >
+        required/>
 
-        <
-        label htmlFor = "bathrooms" > Number of Bathrooms: < /label> <
-        input type = "number"
+        <label htmlFor = "bathrooms" > Number of Bathrooms: </label> 
+        <input type = "number"
         id = "bathrooms"
         name = "bathrooms"
         value = { formData.bathrooms }
@@ -87,8 +80,8 @@ function Home() {
         >
 
         <
-        label htmlFor = "garageSpaces" > Garage Spaces: < /label> <
-        input type = "number"
+        label htmlFor = "garageSpaces" > Garage Spaces: </label> 
+        <input type = "number"
         id = "garageSpaces"
         name = "garageSpaces"
         value = { formData.garageSpaces }
@@ -99,8 +92,8 @@ function Home() {
         >
 
         <
-        label htmlFor = "yearBuilt" > Year Built: < /label> <
-        input type = "number"
+        label htmlFor = "yearBuilt" > Year Built: </label> 
+        <input type = "number"
         id = "yearBuilt"
         name = "yearBuilt"
         value = { formData.yearBuilt }
@@ -108,11 +101,9 @@ function Home() {
         min = "1800"
         max = "2099"
         step = "1"
-        required /
-        >
+        required/>
 
-        <
-        label htmlFor = "patiosPorches" > Number of Patios / Porches: < /label> <
+        <label htmlFor = "patiosPorches" > Number of Patios / Porches: </label> <
         input type = "number"
         id = "patiosPorches"
         name = "patiosPorches"
@@ -123,53 +114,47 @@ function Home() {
         required /
         >
 
-        <
-        label htmlFor = "lotSize" > Lot Size(sq.ft.): < /label> <
-        input type = "number"
+        <label htmlFor = "lotSize" > Lot Size(sq.ft.): </label> 
+        <input type = "number"
         id = "lotSize"
         name = "lotSize"
         value = { formData.lotSize }
         onChange = { handleChange }
         min = "0"
         step = "1"
-        required /
-        >
+        required />
 
-        <
-        label htmlFor = "houseSize" > House Size(sq.ft.): < /label> <
-        input type = "number"
+        <label htmlFor = "houseSize" > House Size(sq.ft.): </label> 
+        <input type = "number"
         id = "houseSize"
         name = "houseSize"
         value = { formData.houseSize }
         onChange = { handleChange }
         min = "0"
         step = "1"
-        required /
-        >
+        required />
 
-        <
-        label htmlFor = "numStories" > Number of Stories: < /label> <
-        input type = "number"
+        <label htmlFor = "numStories" > Number of Stories: </label> 
+        <input type = "number"
         id = "numStories"
         name = "numStories"
         value = { formData.numStories }
         onChange = { handleChange }
         min = "0"
         step = "1"
-        required /
-        >
+        required />
 
-        <
-        button type = "button"
-        onClick = { calculatePrice } >
-        Calculate <
-        /button> < /
-        form >
+        <button type = "button"
+        onClick = { calculatePrice }>
+            Calculate </button> 
+        </form>
 
         {
-            result && < div id = "result" > { result } < /div>} < /
-            div > <
-            /div>
+            result && <div id = "result" > { result } 
+            </div>
+        } 
+            </div > 
+            </div>
         );
     }
 
