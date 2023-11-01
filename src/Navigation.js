@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './App.js';
 import './Navigation.css'; 
+import './Description.js';
 
 const Navigation = () => {
   return (
@@ -25,5 +27,6 @@ const Navigation = () => {
     </nav>
   );
 };
+
 
 export default Navigation;
