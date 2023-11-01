@@ -5,6 +5,7 @@ import './Navigation.css';
 import Home from './Home';
 import Description from './Description';
 import Navigation from './Navigation';
+import Visualizations from './Visualizations';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/description" element={<Description />} />
+          <Route path="/visualizations" element={<Visualizations />} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,29 @@
+.visualization-header {
+    font-size: 4.5; 
+    margin-bottom: 40px; 
+    border-bottom: 2px solid #ccc;
+    /* text-decoration: underline; */
+}
+
+.visualizations-container {
+    text-align: center; 
+    padding: 20px;
+    max-width: 70%; 
+    margin: 0 auto;
+}
+
+.visualization-section {
+    margin: 20px 0; 
+    padding-bottom: 20px; 
+    border-bottom: 2px solid #ccc;
+}
+
+.visualization-section img {
+    width: 100%; 
+    max-width: 1500px; 
+    margin: 10px auto; 
+}
+
+.visualization-section:last-child {
+    border-bottom: none; 
+}
