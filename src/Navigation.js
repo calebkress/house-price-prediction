@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './App.js';
 import './Navigation.css'; 
 import './Description.js';
+import './Visualizations.js';
 
 const Navigation = () => {
   return (
@@ -14,8 +15,8 @@ const Navigation = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/visuals" className="nav-link">
-            Visuals
+          <Link to="/visualizations" className="nav-link">
+            Visualizations
           </Link>
         </li>
         <li className="nav-item">
