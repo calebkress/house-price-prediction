@@ -108,7 +108,7 @@ function Home() {
 function IntroPage({ onNext }) {
     return (
         <div>
-            <p>Discover the predicted cost of the home you want...</p>
+            <p className="introText">Discover the predicted cost of the home you want...</p>
             <button type="button" onClick={onNext}>Start</button>
         </div>
     );
@@ -147,10 +147,10 @@ function ResultPage({ result, onReset }) {
     return (
         <div className="resultPage">
             <p className="calculatedPrice">{result}</p>
-            <button type="button" onClick={onReset}>Start Over</button>
         </div>
     );
 }
 
 
 export default Home;
+

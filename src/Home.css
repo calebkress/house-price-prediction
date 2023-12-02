@@ -73,7 +73,7 @@ form {
 /* Label styling */
 
 label {
-    font-size: 18px;
+    font-size: 35px;
     /* Larger font size for the label */
     color: #333;
     /* Dark grey color for text */
@@ -98,7 +98,7 @@ textarea {
     width: 100%;
     /* Full width of the form */
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 35px;
     /* Larger font size for input */
 }
 
@@ -115,7 +115,7 @@ button {
     border: none;
     border-radius: 0;
     /* Remove border-radius */
-    font-size: 18px;
+    font-size: 35px;
     /* Larger font size for button text */
     text-transform: uppercase;
     /* Uppercase button text */
@@ -125,6 +125,7 @@ button {
     margin-top: 20px;
     /* Space above the button */
     cursor: pointer;
+    align-items: center;
 }
 
 
@@ -141,15 +142,29 @@ button:hover {
 /* Style for the calculated price */
 
 .calculatedPrice {
-    font-size: 24px;
+    font-size: 35px;
     /* Larger font size */
     color: #000;
     /* Black color for the text */
-    font-weight: bold;
+    /*   font-weight: bold; */
     /* Make the font bold */
     margin-top: 20px;
     /* Space above the result */
     margin-bottom: 20px;
     /* Space below the result */
     align-items: center;
+}
+
+
+/* Style for the intro text */
+
+.introText {
+    font-size: 35px;
+    /* Larger font size */
+    color: #333;
+    /* Set the text color, if needed */
+    font-weight: normal;
+    /* Normal font weight */
+    margin-bottom: 20px;
+    /* Space below the text */
 }
