@@ -3,196 +3,154 @@ import "./App.css";
 import "./Home.css";
 
 function Home() {
-	// State management for forms 
-	// This allows us to temporarily store form data to send to the model
-	const [formData, setFormData] = useState({
-		zipCode: '',
-		bedrooms: '',
-		bathrooms: '',
-		garageSpaces: '',
-		yearBuilt: '',
-		patiosPorches: '',
-		lotSize: '',
-		houseSize: '',
-		numStories: '',
-	});
+    const [formData, setFormData] = useState({
+        zipCode: '',
+        bedrooms: '',
+        bathrooms: '',
+        garageSpaces: '',
+        yearBuilt: '',
+        patiosPorches: '',
+        lotSize: '',
+        houseSize: '',
+        numStories: '',
+    });
 
-	// Store the result the user calculates
-	const [result, setResult] = useState(null);
+    const [result, setResult] = useState('');
+    const [currentStep, setCurrentStep] = useState(0);
+    const totalSteps = 10; // 9 fields + intro page
 
-	// Function to update state on form changes
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormData({
-			...formData,
-			[name]: value,
-		});
-	};
+    const handleChange = (e) => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            [e.target.name]: e.target.value
+        }));
+    };
+
+    const goToNextStep = () => setCurrentStep(currentStep + 1);
+    const goToPreviousStep = () => setCurrentStep(currentStep - 1);
 
     const calculatePrice = () => {
-        // Implement price projection calculation logic here
-		// Access the form data in the 'formData' object
-		// For example, to calculate a basic total:
-        // Base price for homes in Austin
-        let totalPrice = 300000;
-    
-        // ZIP Code: Ignored for now.
-        
-        // Bedrooms: Assume each additional bedroom adds $50,000
-        totalPrice += parseInt(formData.bedrooms) * 50000;
-    
-        // Bathrooms: Assume each additional bathroom adds $30,000
-        totalPrice += parseInt(formData.bathrooms) * 30000;
-    
-        // Garage Spaces: Assume each garage space adds $20,000
-        totalPrice += parseInt(formData.garageSpaces) * 20000;
-    
-        // Year Built: Assume a decay factor of $2,000 per year since 2000
-        const yearBuiltFactor = Math.max(0, 2000 - parseInt(formData.yearBuilt)) * 2000;
-        totalPrice -= yearBuiltFactor;
-    
-        // Patios/Porches: Assume each one adds $10,000
-        totalPrice += parseInt(formData.patiosPorches) * 10000;
-    
-        // Lot Size: Assume every additional 100 sq.ft. adds $5,000
-        totalPrice += (parseInt(formData.lotSize) / 100) * 5000;
-    
-        // House Size: Assume every additional 100 sq.ft. of house adds $10,000
-        totalPrice += (parseInt(formData.houseSize) / 100) * 10000;
-    
-        // Number of Stories: Assume each story above 1 adds $30,000
-        totalPrice += Math.max(0, parseInt(formData.numStories) - 1) * 30000;
-    
-        // Cap the price at $1.2M
+        let totalPrice = 300000; // Base price for homes in Austin
+
+        totalPrice += parseInt(formData.bedrooms || 0) * 50000;
+        totalPrice += parseInt(formData.bathrooms || 0) * 30000;
+        totalPrice += parseInt(formData.garageSpaces || 0) * 20000;
+        totalPrice += Math.max(0, 2000 - parseInt(formData.yearBuilt || 0)) * 2000;
+        totalPrice += parseInt(formData.patiosPorches || 0) * 10000;
+        totalPrice += (parseInt(formData.lotSize || 0) / 100) * 5000;
+        totalPrice += (parseInt(formData.houseSize || 0) / 100) * 10000;
+        totalPrice += Math.max(0, parseInt(formData.numStories || 0) - 1) * 30000;
         totalPrice = Math.min(totalPrice, 1200000);
-    
+
         setResult(`Estimated Price: $${totalPrice.toFixed(2)}`);
+        goToNextStep(); // Move to the result page
     };
-    
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter' && e.target.type !== 'textarea') {
+            e.preventDefault(); // Prevent the default form submit behavior
+            if (currentStep < totalSteps - 1) {
+                goToNextStep();
+            } else {
+                calculatePrice();
+            }
+        }
+    };
+
+    const renderStep = () => {
+		switch (currentStep) {
+            case 0:
+                return <IntroPage onNext={goToNextStep} />;
+            case 1:
+                return <FieldStep fieldName="zipCode" value={formData.zipCode} onChange={handleChange} onNext={goToNextStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 2:
+                return <FieldStep fieldName="bedrooms" value={formData.bedrooms} onChange={handleChange} onNext={goToNextStep} onPrevious={goToPreviousStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 3:
+                return <FieldStep fieldName="bathrooms" value={formData.bathrooms} onChange={handleChange} onNext={goToNextStep} onPrevious={goToPreviousStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 4:
+                return <FieldStep fieldName="garageSpaces" value={formData.garageSpaces} onChange={handleChange} onNext={goToNextStep} onPrevious={goToPreviousStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 5:
+                return <FieldStep fieldName="yearBuilt" value={formData.yearBuilt} onChange={handleChange} onNext={goToNextStep} onPrevious={goToPreviousStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 6:
+                return <FieldStep fieldName="patiosPorches" value={formData.patiosPorches} onChange={handleChange} onNext={goToNextStep} onPrevious={goToPreviousStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 7:
+                return <FieldStep fieldName="lotSize" value={formData.lotSize} onChange={handleChange} onNext={goToNextStep} onPrevious={goToPreviousStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 8:
+                return <FieldStep fieldName="houseSize" value={formData.houseSize} onChange={handleChange} onNext={goToNextStep} onPrevious={goToPreviousStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 9:
+                return <FieldStep fieldName="numStories" value={formData.numStories} onChange={handleChange} onNext={calculatePrice} onPrevious={goToPreviousStep} currentStep={currentStep} totalSteps={totalSteps} />;
+            case 10:
+                return <ResultPage result={result} />;
+            default:
+                return <FieldStep 
+				fieldName="numStories" 
+				value={formData.numStories} 
+				onChange={handleChange} 
+				onNext={() => calculatePrice()} // Changed to a function call
+				onPrevious={goToPreviousStep} 
+				currentStep={currentStep} 
+				totalSteps={totalSteps} />;
+        }
+    };
 
 	return (
-		<div className="App">
-			<div className="houseForm">
-				<h1>Home Price Projection</h1>
-				<form>
-					<label htmlFor="zipCode">ZIP Code:</label>
-					<input 
-						type="number"
-						id="zipCode"
-						name="zipCode"
-						value={formData.zipCode}
-						onChange={handleChange}
-						min="10000"
-						max="99999"
-						required
-					/>
-
-					<label htmlFor="bedrooms">Number of Bedrooms:</label>
-					<input 
-						type="number"
-						id="bedrooms"
-						name="bedrooms"
-						value={formData.bedrooms}
-						onChange={handleChange}
-						min="0"
-						step="1"
-						required
-					/>
-
-					<label htmlFor="bathrooms">Number of Bathrooms:</label>
-					<input 
-						type="number"
-						id="bathrooms"
-						name="bathrooms"
-						value={formData.bathrooms}
-						onChange={handleChange}
-						min="0"
-						step="0.5"
-						required
-					/>
-
-					<label htmlFor="garageSpaces">Garage Spaces:</label>
-					<input 
-						type="number"
-						id="garageSpaces"
-						name="garageSpaces"
-						value={formData.garageSpaces}
-						onChange={handleChange}
-						min="0"
-						step="1"
-						required
-					/>
-
-					<label htmlFor="yearBuilt">Year Built:</label>
-					<input 
-						type="number"
-						id="yearBuilt"
-						name="yearBuilt"
-						value={formData.yearBuilt}
-						onChange={handleChange}
-						min="1800"
-						max="2099"
-						step="1"
-						required
-					/>
-
-					<label htmlFor="patiosPorches">Number of Patios / Porches:</label>
-					<input 
-						type="number"
-						id="patiosPorches"
-						name="patiosPorches"
-						value={formData.patiosPorches}
-						onChange={handleChange}
-						min="0"
-						step="1"
-						required
-					/>
-
-					<label htmlFor="lotSize">Lot Size(sq.ft.):</label>
-					<input 
-						type="number"
-						id="lotSize"
-						name="lotSize"
-						value={formData.lotSize}
-						onChange={handleChange}
-						min="0"
-						step="1"
-						required
-					/>
-
-					<label htmlFor="houseSize">House Size(sq.ft.):</label>
-					<input 
-						type="number"
-						id="houseSize"
-						name="houseSize"
-						value={formData.houseSize}
-						onChange={handleChange}
-						min="0"
-						step="1"
-						required
-					/>
-
-					<label htmlFor="numStories">Number of Stories:</label>
-					<input 
-						type="number"
-						id="numStories"
-						name="numStories"
-						value={formData.numStories}
-						onChange={handleChange}
-						min="0"
-						step="1"
-						required
-					/>
-
-					<button type="button" onClick={calculatePrice}>
-						Calculate
-					</button>
-				</form>
-
-				{ result && <div id="result">{result}</div> }
-			</div>
-		</div>
-	);
+        <div className="App">
+            <div className="houseForm">
+                <h1>Home Price Projection</h1>
+                <form onKeyPress={handleKeyPress}>
+                    {renderStep()}
+                </form>
+            </div>
+        </div>
+    );
 }
+
+function IntroPage({ onNext }) {
+    return (
+        <div>
+            <p>Discover the predicted cost of the home you want...</p>
+            <button type="button" onClick={onNext}>Start</button>
+        </div>
+    );
+}
+
+function FieldStep({ fieldName, value, onChange, onNext, onPrevious }) {
+    // Capitalize the first letter of each word in the label
+    const label = fieldName
+        .replace(/([A-Z])/g, ' $1')
+        .trim()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+
+    return (
+        <div className="fieldStep">
+            <label htmlFor={fieldName}>{label}:</label>
+            <input
+                type="number"
+                id={fieldName}
+                name={fieldName}
+                value={value}
+                onChange={onChange}
+                autoComplete="off"
+            />
+            {onPrevious && <button type="button" onClick={onPrevious}>Previous</button>}
+            <button type="button" onClick={onNext}>
+                {fieldName === 'numStories' ? 'Calculate' : 'Next'}
+            </button>
+        </div>
+    );
+}
+
+
+function ResultPage({ result, onReset }) {
+    return (
+        <div className="resultPage">
+            <p className="calculatedPrice">{result}</p>
+            <button type="button" onClick={onReset}>Start Over</button>
+        </div>
+    );
+}
+
 
 export default Home;

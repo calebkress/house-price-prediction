@@ -1,29 +1,51 @@
 .visualization-header {
-    font-size: 4.5; 
-    margin-bottom: 40px; 
+    font-size: 3em;
+    /* Reduced font size for better fit on the page */
+    line-height: 1.2;
+    /* Added line-height for space within the header */
+    padding-bottom: 0.5em;
+    /* Space below the header text */
     border-bottom: 2px solid #ccc;
-    /* text-decoration: underline; */
+    /* Border below the header */
 }
 
 .visualizations-container {
-    text-align: center; 
-    padding: 20px;
-    max-width: 70%; 
+    text-align: center;
+    padding: 80px;
+    max-width: 100%;
+    /* Allow the container to take the full width if necessary */
     margin: 0 auto;
+    /* Center the container */
 }
 
 .visualization-section {
-    margin: 20px 0; 
-    padding-bottom: 20px; 
+    padding-top: 2em;
+    /* Space at the top of each section to push down the content */
+    margin-bottom: 20px;
+    /* Space at the bottom of each section */
+    padding-bottom: 20px;
     border-bottom: 2px solid #ccc;
 }
 
+.visualization-section:first-child {
+    padding-top: 4em;
+    /* More space at the top of the first section after the header */
+}
+
+.visualization-section h2 {
+    margin-top: 0;
+    /* Remove the top margin from h2 elements */
+    line-height: 1.2;
+    /* Line height for space between lines */
+}
+
 .visualization-section img {
-    width: 100%; 
-    max-width: 1500px; 
-    margin: 10px auto; 
+    width: 100%;
+    max-width: 1500px;
+    margin: 10px auto;
+    display: block;
 }
 
 .visualization-section:last-child {
-    border-bottom: none; 
+    border-bottom: none;
 }
