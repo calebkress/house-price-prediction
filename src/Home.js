@@ -14,6 +14,7 @@ function Home() {
         houseSize: '',
         numStories: '',
     });
+
     const [result, setResult] = useState('');
     const [currentStep, setCurrentStep] = useState(0);
     const totalSteps = 10; // 9 fields + intro page
@@ -114,7 +115,14 @@ function IntroPage({ onNext }) {
 }
 
 function FieldStep({ fieldName, value, onChange, onNext, onPrevious }) {
-    const label = fieldName.replace(/([A-Z])/g, ' $1').trim();
+    // Capitalize the first letter of each word in the label
+    const label = fieldName
+        .replace(/([A-Z])/g, ' $1')
+        .trim()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+
     return (
         <div className="fieldStep">
             <label htmlFor={fieldName}>{label}:</label>
@@ -134,12 +142,15 @@ function FieldStep({ fieldName, value, onChange, onNext, onPrevious }) {
     );
 }
 
-function ResultPage({ result }) {
+
+function ResultPage({ result, onReset }) {
     return (
         <div className="resultPage">
-            <p>{result}</p>
+            <p className="calculatedPrice">{result}</p>
+            <button type="button" onClick={onReset}>Start Over</button>
         </div>
     );
 }
+
 
 export default Home;

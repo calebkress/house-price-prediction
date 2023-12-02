@@ -13,12 +13,8 @@ body {
     /* Light gray background, assuming it's the color in the screenshot */
 }
 
-
-/* Ensure the navbar takes full width */
-
 .navbar {
     width: 100%;
-    /* Add other styles for the navbar here */
 }
 
 
@@ -139,4 +135,21 @@ button:hover {
     /* Darker shade on hover */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     /* Stronger shadow on hover */
+}
+
+
+/* Style for the calculated price */
+
+.calculatedPrice {
+    font-size: 24px;
+    /* Larger font size */
+    color: #000;
+    /* Black color for the text */
+    font-weight: bold;
+    /* Make the font bold */
+    margin-top: 20px;
+    /* Space above the result */
+    margin-bottom: 20px;
+    /* Space below the result */
+    align-items: center;
 }
