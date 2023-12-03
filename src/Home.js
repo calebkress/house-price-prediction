@@ -17,7 +17,7 @@ function Home() {
 
     const [result, setResult] = useState('');
     const [currentStep, setCurrentStep] = useState(0);
-    const totalSteps = 10; // 9 fields + intro page
+    const totalSteps = 10; 
 
     const handleChange = (e) => {
         setFormData(prevFormData => ({
@@ -30,7 +30,7 @@ function Home() {
     const goToPreviousStep = () => setCurrentStep(currentStep - 1);
 
     const calculatePrice = () => {
-        let totalPrice = 300000; // Base price for homes in Austin
+        let totalPrice = 300000; 
 
         totalPrice += parseInt(formData.bedrooms || 0) * 50000;
         totalPrice += parseInt(formData.bathrooms || 0) * 30000;
@@ -108,7 +108,7 @@ function Home() {
 function IntroPage({ onNext }) {
     return (
         <div>
-            <p>Discover the predicted cost of the home you want...</p>
+            <p className="introText">Discover the predicted cost of the home you want...</p>
             <button type="button" onClick={onNext}>Start</button>
         </div>
     );
@@ -147,10 +147,10 @@ function ResultPage({ result, onReset }) {
     return (
         <div className="resultPage">
             <p className="calculatedPrice">{result}</p>
-            <button type="button" onClick={onReset}>Start Over</button>
         </div>
     );
 }
 
 
 export default Home;
+
