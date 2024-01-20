@@ -30,20 +30,48 @@ function Home() {
     const goToPreviousStep = () => setCurrentStep(currentStep - 1);
 
     const calculatePrice = () => {
-        let totalPrice = 300000; 
+        // Hardcoded for testing
+        const testData = {
+            numOfBathrooms: 2, // integer or float (as needed by your model)
+            livingAreaSqFt: 1200, // integer
+            numOfBedrooms: 3, // integer
+            numOfStories: 1, // integer
+            longitude: -97.7431, // float
+            latitude: 30.2672, // float
+            zipcode: "78701", // string
+            propertyTaxRate: 1.8, // float
+            lotSizeSqFt: 7000, // integer
+            hasGarage: true, // boolean
+            hasSpa: false, // boolean
+            hasView: true, // boolean
+            "homeType_Vacant Land": false, // boolean
+            "homeType_Single Family": true, // boolean
+            "homeType_MultiFamily": false, // boolean
+            "homeType_Multiple Occupancy": false, // boolean
+            "homeType_Mobile / Manufactured": false, // boolean
+            "homeType_Townhouse": false, // boolean
+            "homeType_Condo": false, // boolean
+            yearBuilt: 1986 // integer
+        };
+        
 
-        totalPrice += parseInt(formData.bedrooms || 0) * 50000;
-        totalPrice += parseInt(formData.bathrooms || 0) * 30000;
-        totalPrice += parseInt(formData.garageSpaces || 0) * 20000;
-        totalPrice += Math.max(0, 2000 - parseInt(formData.yearBuilt || 0)) * 2000;
-        totalPrice += parseInt(formData.patiosPorches || 0) * 10000;
-        totalPrice += (parseInt(formData.lotSize || 0) / 100) * 5000;
-        totalPrice += (parseInt(formData.houseSize || 0) / 100) * 10000;
-        totalPrice += Math.max(0, parseInt(formData.numStories || 0) - 1) * 30000;
-        totalPrice = Math.min(totalPrice, 1200000);
-
-        setResult(`Estimated Price: $${totalPrice.toFixed(2)}`);
-        goToNextStep(); // Move to the result page
+        // Send API request
+        fetch('http://54.209.165.54:5000/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(testData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            // setResult(`Estimated Price: $${data.prediction.toFixed(2)}`);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            setResult('Failed to calculate the price. Please try again.');
+        });
     };
 
     const handleKeyPress = (e) => {
