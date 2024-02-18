@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Price-Prediction</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/MultiForm.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form-.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav" style="margin-bottom: 20px;">
+        <div class="container"><a class="navbar-brand" href="#">Austin, Texas</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item nav-link"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item nav-link"><a class="nav-link" href="visualizations.html">Visualizations</a></li>
+                    <li class="nav-item nav-link"><a class="nav-link" data-bss-hover-animate="bounce" href="description.html">Description</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row register-form" style="height: 1250px;">
+        <div class="col-md-8 offset-md-2" style="margin-top: 150px;height: 1100px;">
+            <form id="myForm" class="custom-form" style="font-family: Cabin, sans-serif;">
+                <h1 style="font-size: 30px;">Estimate Form</h1>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">Zipcode:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="zipCode" name="zipCode"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">Bedrooms:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="bedrooms" name="bedrooms"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">Bathrooms:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="bathrooms" name="bathrooms"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">Garage Spaces:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="garageSpaces" name="garageSpaces"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">Year Built:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="yearBuilt" name="yearBuilt"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">Patios/Porches:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="patiosPorches" name="patiosPorches"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">Lot Size:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="lotSize" name="lotSize"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">House Size:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="houseSize" name="houseSize"></div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 col-xl-4 label-column"><label class="col-form-label" for="name-input-field" style="font-size: 16px;">Number of Stories:</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="number" id="numStories" name="numStories"></div>
+                </div><button class="btn btn-primary btn-lg" id="calculateButton" type="submit" style="margin: 10px;width: 200px;font-size: 30px;">submit</button>
+                <div id="resultContainer" style="margin: 20px;font-size: 22px;margin-bottom: 10px;"></div>
+            </form>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/grayscale.js"></script>
+    <script src="assets/js/Home.js"></script>
+</body>
+
+</html>
